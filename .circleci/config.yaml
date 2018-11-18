@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  test:
+    docker:
+    - image: debian:stretch
+    steps:
+    - checkout
+    - run:
+        name: Dart
+        command: |
+          wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v0.5.1-beta.tar.xz
+          tar xf flutter_linux_v0.5.1-beta.tar.xz
+    - run:
+        name: Test
+        command: |
+          ./flutter/bin/cache/dart-sdk/bin/dartanalyzer dartanalyzer lib/**/*.dart
+          ./flutter/bin/cache/dart-sdk/bin/dartanalyzer dartanalyzer {lib,test,example}/*.dart
+          ./flutter/bin/cache/dart-sdk/bin/pub run test
+workflows:
+  version: 2
+  release:
+    jobs:
+    - test
