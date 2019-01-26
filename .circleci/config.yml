@@ -13,11 +13,6 @@ jobs:
         command: |
           wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.0.0-stable.tar.xz
           tar xf flutter_linux_v1.0.0-stable.tar.xz
-
-          mkdir ~/.npm-global
-          npm config set prefix '~/.npm-global'
-          export PATH=~/.npm-global/bin:$PATH
-          source ~/.profile
     - run:
         name: Test
         command: |
