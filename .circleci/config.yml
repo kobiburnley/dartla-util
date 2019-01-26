@@ -8,13 +8,24 @@ jobs:
     - run:
         name: Dart
         command: |
-          wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v0.5.1-beta.tar.xz
-          tar xf flutter_linux_v0.5.1-beta.tar.xz
+          wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.0.0-stable.tar.xz
+          tar xf flutter_linux_v1.0.0-stable.tar.xz
+
+          mkdir ~/.npm-global
+          npm config set prefix '~/.npm-global'
+          export PATH=~/.npm-global/bin:$PATH
+          source ~/.profile
     - run:
         name: Test
         command: |
-          ./flutter/bin/cache/dart-sdk/bin/dartanalyzer {lib,example}/*.dart
-#          ./flutter/bin/cache/dart-sdk/bin/pub run test
+          cat pubspec.yaml
+          ./flutter/bin/flutter packages get
+          ./flutter/bin/cache/dart-sdk/bin/dartanalyzer lib/*.dart
+
+          git config --global user.email circleci@circleci.com
+          git config --global user.name CircleCI
+          git add 'pubspec.yaml'
+          git diff-index --quiet --cached origin/$BRANCH_NAME || (commit -m 'Lock [skip ci]' && git push)
 workflows:
   version: 2
   release:
