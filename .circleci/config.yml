@@ -4,6 +4,9 @@ jobs:
     docker:
     - image: circleci/android:api-25-alpha
     steps:
+    - add_ssh_keys:
+        fingerprints:
+        - "7c:98:56:f8:ad:23:d2:f4:cb:51:f6:7c:91:26:88:69"
     - checkout
     - run:
         name: Dart
