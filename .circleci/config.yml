@@ -25,7 +25,7 @@ jobs:
           git config --global user.email circleci@circleci.com
           git config --global user.name CircleCI
           git add 'pubspec.yaml'
-          git diff-index --quiet --cached origin/$BRANCH_NAME || (commit -m 'Lock [skip ci]' && git push)
+          git diff-index --quiet --cached origin/$CIRCLE_BRANCH || (commit -m 'Lock [skip ci]' && git push)
 workflows:
   version: 2
   release:
