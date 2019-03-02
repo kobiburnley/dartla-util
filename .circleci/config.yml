@@ -6,7 +6,7 @@ jobs:
     steps:
     - add_ssh_keys:
         fingerprints:
-        - "7c:98:56:f8:ad:23:d2:f4:cb:51:f6:7c:91:26:88:69"
+        - "de:70:0b:03:ee:74:0d:27:3b:d1:8b:4e:bf:2c:ff:48"
     - checkout
     - run:
         name: Dart
