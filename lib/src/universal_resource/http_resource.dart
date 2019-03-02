@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
-import 'package:universal_resource/src/query_result.dart';
-import 'package:universal_resource/src/resource.dart';
+import 'package:dartla_util/src/universal_resource/query_result.dart';
+import 'package:dartla_util/src/universal_resource/resource.dart';
 import 'package:uri/uri.dart';
 
 typedef Q BodyParser<T, Q extends QueryResult<T>>(String body);

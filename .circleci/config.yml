@@ -18,7 +18,7 @@ jobs:
         command: |
           cat pubspec.yaml
           ./flutter/bin/flutter packages get
-          ./flutter/bin/cache/dart-sdk/bin/dartanalyzer lib/*.dart
+          ./flutter/bin/cache/dart-sdk/bin/dartanalyzer lib/src/**/*.dart
 
           git config --global user.email circleci@circleci.com
           git config --global user.name CircleCI
